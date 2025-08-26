@@ -22,7 +22,7 @@ module.exports = function productReviews () {
           result => {
             // Artificial wait for timing attack challenge
             setTimeout(function () {
-              db.reviews.findOne({ _id: id }).then(review => {
+              db.reviews.findOne({ _id: { $eq: id } }).then(review => {
                 const likedBy = review.likedBy
                 likedBy.push(user.data.email)
                 let count = 0
